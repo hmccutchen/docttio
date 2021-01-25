@@ -1,2 +1,12 @@
 <h1>Patients#new</h1>
 <p>Find me in app/views/patients/new.html.erb</p>
+      
+   <%= @doctor.try(:first_name) %>   
+  <%= @doctor.last_name %>
+
+
+  <%= form_for([@doctor, @model]) do |f| %>
+  <%= f.text_field :first_name, placeholder: "First Name" %>
+  <%= f.text_field :last_name, placeholder: "Last Name" %>
+   <%= f.submit :sumit %>
+   <% end %>
