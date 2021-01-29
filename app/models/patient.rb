@@ -1,4 +1,4 @@
 class Patient < ApplicationRecord
-  belongs_to :doctors
-
+  belongs_to :doctor
+ 
 end

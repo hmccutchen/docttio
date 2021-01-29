@@ -1,0 +1,15 @@
+<div class="container">
+	<%= link_to "Create new appointment", new_appointment_path %>
+</div>
+
+<% @model.each do |a| %>
+<div class="container">
+	
+<%= a.doctor.first_name %> : <%= a.patient.first_name %><br>
+<% start_time = a.start_time %>
+Start time: <%= start_time.strftime("%H:%M:%S") %> -
+ <% end_time = a.end_time %>
+End time: <%= end_time.strftime("%H:%M:%S") %> <%= link_to "delete",  appointment_path(a.id), class: "btn btn-danger", method: :delete %> <%= link_to "edit", edit_appointment_path(a.id), class: "btn btn-info" %><br>
+</div>
+
+<% end %>
