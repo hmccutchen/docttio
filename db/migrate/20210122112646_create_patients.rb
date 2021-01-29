@@ -3,7 +3,7 @@ class CreatePatients < ActiveRecord::Migration[6.0]
     create_table :patients do |t|
       t.string :first_name
       t.string :last_name
-      t.references :doctors, null: false, foreign_key: true
+      t.references :doctor, null: false, foreign_key: true
 
       t.timestamps
     end

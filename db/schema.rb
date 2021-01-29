@@ -19,8 +19,12 @@ ActiveRecord::Schema.define(version: 2021_01_23_043425) do
     t.time "start_time"
     t.time "end_time"
     t.date "date"
+    t.bigint "doctor_id", null: false
+    t.bigint "patient_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["doctor_id"], name: "index_appointments_on_doctor_id"
+    t.index ["patient_id"], name: "index_appointments_on_patient_id"
   end
 
   create_table "doctors", force: :cascade do |t|
@@ -34,11 +38,13 @@ ActiveRecord::Schema.define(version: 2021_01_23_043425) do
   create_table "patients", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
-    t.bigint "doctors_id", null: false
+    t.bigint "doctor_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["doctors_id"], name: "index_patients_on_doctors_id"
+    t.index ["doctor_id"], name: "index_patients_on_doctor_id"
   end
 
-  add_foreign_key "patients", "doctors", column: "doctors_id"
+  add_foreign_key "appointments", "doctors"
+  add_foreign_key "appointments", "patients"
+  add_foreign_key "patients", "doctors"
 end

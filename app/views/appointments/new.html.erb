@@ -1,0 +1,17 @@
+<div class="container">
+	<%= link_to "add new Doctor", new_doctor_path %>
+
+</div>
+
+<%= form_for @model do |f| %>
+<%= f.label :doctor %>:
+
+  <%= f.collection_select(:doctor_id, Doctor.all, :id, :first_name, :prompt => "Select") %><br>
+  <%= f.label :patient %>:
+   <%= f.collection_select(:patient_id, Patient.all, :id, :first_name, :prompt => 'Select') %><br>
+  <%= f.date_field :date %><br>
+  <%= f.time_field :start_time %>
+  <span> to </span>
+  <%= f.time_field :end_time %> <br>
+  <%= f.submit :submit %>
+  <% end %>

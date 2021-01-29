@@ -13,9 +13,12 @@ class PatientsController < ApplicationController
 
   def create
   	load_doctor
-
+  
   	@model = @doctor.patients.build(patient_params)
-
+  	if @model.save 
+  
+  		redirect_to new_appointment_path
+  	end
   end
 
   def show
